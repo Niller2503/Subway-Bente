@@ -63,5 +63,8 @@ public class PlayerController1 : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
+
+        speed += 0.1f * Time.deltaTime;
+        Debug.Log(speed);
     }
 }
