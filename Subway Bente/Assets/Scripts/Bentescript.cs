@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class PlayerController1 : MonoBehaviour
+public class Bentescript : MonoBehaviour
 {
     private float speed = 30;
     private float movementX;
     private float movementY;
-    
+
     RaycastHit hitData;
 
 
@@ -23,13 +23,13 @@ public class PlayerController1 : MonoBehaviour
         {
             if (movementX == -1)
             {
-                if(transform.position.z != 10)
+                if (transform.position.z != 10)
                 {
                     Ray ray = new Ray(transform.position, transform.forward);
-                    
+
                     Physics.Raycast(ray, out hitData);
                     float hitPosition = hitData.distance;
-            
+
                     if (hitPosition > 10 || hitPosition == 0)
                     {
                         transform.position = transform.position + 10 * Vector3.forward;
@@ -45,7 +45,7 @@ public class PlayerController1 : MonoBehaviour
 
                     Physics.Raycast(ray, out hitData);
                     float hitPosition = hitData.distance;
-               
+
                     if (hitPosition > 10 || hitPosition == 0)
                     {
                         transform.position = transform.position - 10 * Vector3.forward;
@@ -56,7 +56,7 @@ public class PlayerController1 : MonoBehaviour
 
         if (movementY == 1)
         {
-            Ray ray = new Ray(transform.position, -1*transform.up);
+            Ray ray = new Ray(transform.position, -1 * transform.up);
 
             Physics.Raycast(ray, out hitData);
             float hitPosition = hitData.distance;
@@ -74,7 +74,7 @@ public class PlayerController1 : MonoBehaviour
 
         if (movementY == 0)
         {
-            transform.localScale = new Vector3 (1.8f, 2.5f, 1.8f);
+            transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
         }
     }
 
@@ -88,26 +88,16 @@ public class PlayerController1 : MonoBehaviour
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
 
-        speed += speed * 0.01f * Time.deltaTime;
+        speed += 0.1f * Time.deltaTime;
 
-        Ray rayFremad = new Ray(transform.position + 1.6f * Vector3.up, transform.right);
+        Ray ray = new Ray(transform.position, -transform.up);
 
-        Physics.Raycast(rayFremad, out hitData);
-        float hitPositionFremad = hitData.distance;
-        if (hitPositionFremad < 0.3f)
-        {
-            speed = 0;
-        }
+        Physics.Raycast(ray, out hitData);
+        float hitPosition = hitData.distance;
 
-        Ray rayNed = new Ray(transform.position, -transform.up);
-
-        Physics.Raycast(rayNed, out hitData);
-        float hitPositionNed = hitData.distance;
-        if (hitPositionNed < 1f)
-        {
-            transform.position = transform.position + 1f * Vector3.up;
-        }
-
-
+       //  if (hitPosition < f)
+       //  {
+       //     transform.position = transform.position + 
+      //    }
     }
 }
