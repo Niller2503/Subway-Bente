@@ -80,7 +80,8 @@ public class PlayerController1 : MonoBehaviour
 
     void Start()
     {
-
+        //Debug.Log(Physics.gravity.y);
+        Physics.gravity = Vector3.down * 40;
     }
 
     // Update is called once per frame
@@ -94,7 +95,9 @@ public class PlayerController1 : MonoBehaviour
 
         Physics.Raycast(rayFremad, out hitData);
         float hitPositionFremad = hitData.distance;
-        if (hitPositionFremad < 0.3f)
+        Debug.Log("hitpositionFrem:" + hitPositionFremad);
+        //Debug.Log(hitData.transform.gameObject);
+        if (hitPositionFremad < 0.3f && hitPositionFremad>0)
         {
             speed = 0;
         }
@@ -103,6 +106,7 @@ public class PlayerController1 : MonoBehaviour
 
         Physics.Raycast(rayNed, out hitData);
         float hitPositionNed = hitData.distance;
+        Debug.Log("hitpositionNed:"+hitPositionNed);
         if (hitPositionNed < 1f)
         {
             transform.position = transform.position + 1f * Vector3.up;
