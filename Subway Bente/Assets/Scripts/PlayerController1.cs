@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController1 : MonoBehaviour
 {
+    public scoreManager score;
+
     private float speed = 30;
     private float movementX;
     private float movementY;
@@ -63,7 +65,7 @@ public class PlayerController1 : MonoBehaviour
 
             if (hitPosition < 3)
             {
-                transform.position = transform.position + 6 * Vector3.up;
+                transform.position = transform.position + 8 * Vector3.up;
             }
         }
 
@@ -100,6 +102,8 @@ public class PlayerController1 : MonoBehaviour
         if (hitPositionFremad < 0.3f && hitPositionFremad>0)
         {
             speed = 0;
+
+            score.scoreIncreasing = false;
         }
 
         Ray rayNed = new Ray(transform.position, -transform.up);
